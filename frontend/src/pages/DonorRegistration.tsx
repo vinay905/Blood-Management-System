@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { donorRegistration } from '../api/DonorApi';
 import React, { useState } from 'react';
+import { donorRegistration } from '../api/DonorApi';
 import Header from '../components/Header';
+
 const DonorRegistration = () => {
     const [responseStatus, setStatus] = useState(false);
     const [formData, setFormData] = useState({
@@ -42,99 +42,105 @@ const DonorRegistration = () => {
 
     return (
         <div>
-            <Header/>
-        
-        <div className="flex justify-center items-center min-h-screen bg-white">
-            <div className="w-full max-w-lg p-8 bg-red-100 shadow-md rounded-lg">
-                <h2 className="text-2xl font-bold text-center text-red-700 mb-6">Blood Donor Registration</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block text-red-700" htmlFor="name">Name</label>
-                        <input
-                            className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:border-red-500"
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-red-700" htmlFor="age">Age</label>
-                        <input
-                            className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:border-red-500"
-                            type="number"
-                            name="age"
-                            value={formData.age}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-red-700" htmlFor="bloodType">Blood Type</label>
-                        <select
-                            className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:border-red-500"
-                            name="bloodType"
-                            value={formData.bloodType}
-                            onChange={handleChange}
-                            required
-                        >
-                            <option value="">Select</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label className="block text-red-700" htmlFor="email">Email</label>
-                        <input
-                            className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:border-red-500"
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-red-700" htmlFor="phone">Phone</label>
-                        <input
-                            className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:border-red-500"
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-red-700" htmlFor="address">Address</label>
-                        <input
-                            className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:border-red-500"
-                            type="text"
-                            name="address"
-                            value={formData.address}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="text-center">
-                        <button
-                            className="w-full px-4 py-2 bg-red-700 text-white font-bold rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-                            type="submit">Register
+            <Header />
+            <div className="flex items-center justify-center min-h-screen bg-gray-100">
+                <div className="w-full max-w-md p-8 bg-white shadow-md rounded-lg">
+                    <h2 className="text-2xl font-bold mb-6 text-center">Blood Donor Registration</h2>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder='Enter name'
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="age" className="block text-sm font-medium text-gray-700">Age:</label>
+                            <input
+                                type="number"
+                                id="age"
+                                name="age"
+                                placeholder='Enter age'
+                                value={formData.age}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="bloodType" className="block text-sm font-medium text-gray-700">Blood Type:</label>
+                            <select
+                                name="bloodType"
+                                value={formData.bloodType}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            >
+                                <option value="" disabled>Select Blood Type</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder='Enter email'
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone:</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder='Enter contact number'
+                                value={formData.phone}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address:</label>
+                            <input
+                                type="text"
+                                id="address"
+                                name="address"
+                                placeholder='Enter your address'
+                                value={formData.address}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <button type="submit" className="w-full py-2 px-4 bg-red-600 text-white font-semibold rounded-md shadow ">
+                            Register
                         </button>
-                    </div>
-                </form>
-                
+                    </form>
+                    {responseStatus && <p className="mt-4 text-green-600">Registration successful!</p>}
+                </div>
             </div>
-            
-        </div>
         </div>
     );
-}
+};
+
 export default DonorRegistration;

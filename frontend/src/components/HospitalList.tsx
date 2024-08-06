@@ -1,7 +1,6 @@
-// src/components/HospitalsList.tsx
 import React, { useEffect, useState } from 'react';
 import { getAllHospitals } from '../api/HospitalApi';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface Hospital {
   id: number;
@@ -12,21 +11,24 @@ interface Hospital {
 
 const HospitalsList: React.FC = () => {
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchHospitals = async () => {
       try {
         const data: Hospital[] = await getAllHospitals();
-        console.log(data);
         setHospitals(data);
       } catch (error) {
         console.log(error);
       }
-      
     };
 
     fetchHospitals();
   }, []);
+
+  const handleClick = (hospital: Hospital) => {
+    navigate('/hospital-details', { state: { hospital } });
+  };
 
   return (
     <div className="py-16 px-8 bg-gray-100">
@@ -34,15 +36,12 @@ const HospitalsList: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         {hospitals.map((hospital) => (
           <div key={hospital.id} className="bg-white p-6 rounded-lg shadow-md mb-6">
-            <Link
-              className="text-2xl font-semibold mb-2"
-              to={{
-                pathname: `/hospital-details`,
-                // state: { hospital }
-              }}
+            <button
+              className="text-2xl font-semibold mb-2 text-blue-500 underline"
+              onClick={() => handleClick(hospital)}
             >
               {hospital.name}
-            </Link>
+            </button>
             <p className="text-lg mb-2">{hospital.address}</p>
             <p className="text-lg font-semibold">Available Blood Types:</p>
             <ul className="list-disc list-inside">

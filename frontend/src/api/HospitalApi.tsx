@@ -1,10 +1,10 @@
 
 import axios from 'axios';
 
-const API_URL = 'http://localhost:9090/api/hospitals/all';
+const API_URL = 'http://localhost:9090/api/hospitals';
 
 export const getAllHospitals = async () => {
-  const response = await axios.get(API_URL,{
+  const response = await axios.get(`${API_URL}/all`,{
     auth: {
         username: 'user',
         password: 'password'
@@ -12,6 +12,18 @@ export const getAllHospitals = async () => {
 });
   return response.data;
 };
+
+
+export const getAllLocations = async () => {
+  const response = await axios.get('http://localhost:9090/api/hospitals/locations',{
+    auth: {
+        username: 'user',
+        password: 'password'
+    }
+}); 
+  return response;
+};
+
 
 // export const getHospitalById = async (id) => {
 //   const response = await axios.get(`${API_URL}/${id}`);

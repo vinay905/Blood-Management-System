@@ -28,4 +28,8 @@ public class HospitalService {
     public void deleteHospital(Long id) {
         hospitalRepository.deleteById(id);
     }
+    
+    public List<String> getAllLocations() {
+        return hospitalRepository.findDistinctLocations();
+    }
 }

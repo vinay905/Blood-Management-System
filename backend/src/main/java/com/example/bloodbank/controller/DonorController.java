@@ -1,7 +1,9 @@
 package com.example.bloodbank.controller;
 import com.example.bloodbank.model.Donor;
 import com.example.bloodbank.service.DonorService;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +21,6 @@ public class DonorController {
         String response= donorService.saveDonor(donor);
         return response;
     }
+    
 }
 

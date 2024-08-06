@@ -40,6 +40,20 @@ public class Donor {
 
     @Column(name ="date", columnDefinition="TIMESTAMP")
     private LocalDateTime datetime;
+    
+    public Donor() {}
+
+    public Donor(String name, String address,String phone,String email ,String bloodType, LocalDateTime datetime, int status,int age) {
+        this.name = name;
+        this.age=age;
+        this.email=email;
+        this.phone=phone;
+        this.address = address;
+        this.bloodType = bloodType;
+        this.datetime = datetime;
+        this.status = status;
+    }
+    
     // Getters and setters
 
     public Long getId() {

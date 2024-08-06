@@ -22,6 +22,13 @@ public class HospitalController {
      return hospitalService.getAllHospitals();
  }
 
+ @CrossOrigin(origins = "http://localhost:3000")
+ @GetMapping("/locations")
+ public List<String> getAllLocations(){
+	 return hospitalService.getAllLocations();
+ }
+ 
+ 
  @GetMapping("/{id}")
  public ResponseEntity<Hospital> getHospitalById(@PathVariable Long id) {
      Hospital hospital = hospitalService.getHospitalById(id);

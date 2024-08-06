@@ -19,12 +19,20 @@ public class Hospital {
  @Column(name = "blood_types", nullable = false)
  private String bloodTypes;
 
+ @Column(name = "location", nullable = false)
+ private String location;
+ 
+ @Column(name = "available_units", nullable = false)
+ private int availableUnits;
+ 
  public Hospital() {}
 
- public Hospital(String name, String address, String bloodTypes) {
+ public Hospital(String name, String address, String bloodTypes, String location, int availableUnits) {
      this.name = name;
      this.address = address;
      this.bloodTypes = bloodTypes;
+     this.location = location;
+     this.availableUnits = availableUnits;
  }
 
  // Getters and Setters
@@ -58,5 +66,21 @@ public class Hospital {
 
  public void setBloodTypes(String bloodTypes) {
      this.bloodTypes = bloodTypes;
+ }
+
+ public String getLocation() {
+     return location;
+ }
+
+ public void setLocation(String location) {
+     this.location = location;
+ }
+
+ public int getAvailableUnits() {
+     return availableUnits;
+ }
+
+ public void setAvailableUnits(int availableUnits) {
+     this.availableUnits = availableUnits;
  }
 }
